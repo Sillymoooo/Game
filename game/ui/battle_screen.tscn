@@ -1,0 +1,171 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccxafwqdqdnsh"]
+
+[ext_resource type="Script" uid="uid://tmt17k88trmv" path="res://game/ui/battle_screen.gd" id="1_2lbu3"]
+[ext_resource type="Script" uid="uid://bx0cwykn7bci3" path="res://game/core/turn_controller.gd" id="1_vw0db"]
+[ext_resource type="Script" uid="uid://bus3xgjxlu7u4" path="res://game/core/enemy_archetype.gd" id="2_i3n6k"]
+[ext_resource type="Resource" uid="uid://bph1sxt5snmg6" path="res://game/core/Enemies/archer_back.tres" id="3_shgit"]
+[ext_resource type="Resource" uid="uid://bvikvkdgscang" path="res://game/core/Enemies/grunt_front.tres" id="4_vrfxk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lbu3"]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="BattleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2lbu3")
+test_enemies = Array[ExtResource("2_i3n6k")]([ExtResource("3_shgit"), ExtResource("4_vrfxk"), ExtResource("4_vrfxk")])
+
+[node name="RootVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TopBar" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="TopBarHBox" type="HBoxContainer" parent="RootVBox/TopBar"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="RootVBox/TopBar/TopBarHBox"]
+layout_mode = 2
+
+[node name="TopBarSpacer" type="Control" parent="RootVBox/TopBar/TopBarHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusLabel" type="Label" parent="RootVBox/TopBar/TopBarHBox"]
+layout_mode = 2
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Arena" type="PanelContainer" parent="RootVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ArenaVBox" type="VBoxContainer" parent="RootVBox/Arena"]
+layout_mode = 2
+
+[node name="BackRowHBox" type="HBoxContainer" parent="RootVBox/Arena/ArenaVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ArenaSpacer" type="Control" parent="RootVBox/Arena/ArenaVBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FrontRowHBox" type="HBoxContainer" parent="RootVBox/Arena/ArenaVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Cockpit" type="PanelContainer" parent="RootVBox"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+
+[node name="CockpitHBox" type="HBoxContainer" parent="RootVBox/Cockpit"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TooltipVBox" type="VBoxContainer" parent="RootVBox/Cockpit/CockpitHBox"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TooltipTitle" type="Label" parent="RootVBox/Cockpit/CockpitHBox/TooltipVBox"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="TooltipBody" type="Label" parent="RootVBox/Cockpit/CockpitHBox/TooltipVBox"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 1
+clip_text = true
+
+[node name="MiddleVBox" type="VBoxContainer" parent="RootVBox/Cockpit/CockpitHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+alignment = 1
+
+[node name="StatusPanel" type="PanelContainer" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2lbu3")
+
+[node name="CombatStatusHBox" type="HBoxContainer" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox/StatusPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HpLabel" type="Label" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox/StatusPanel/CombatStatusHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84840804, 0.21959862, 0.5101745, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 2
+
+[node name="Spacer" type="Control" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox/StatusPanel/CombatStatusHBox"]
+layout_mode = 2
+
+[node name="BlockLabel" type="Label" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox/StatusPanel/CombatStatusHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5331397, 0.49021268, 0.44260296, 1)
+theme_override_font_sizes/font_size = 30
+
+[node name="DiceHBox" type="HBoxContainer" parent="RootVBox/Cockpit/CockpitHBox/MiddleVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="RootVBox/Cockpit/CockpitHBox"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="PhaseLabel" type="Label" parent="RootVBox/Cockpit/CockpitHBox/ButtonsVBox"]
+layout_mode = 2
+
+[node name="RerollsLabel" type="Label" parent="RootVBox/Cockpit/CockpitHBox/ButtonsVBox"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="RerollButton" type="Button" parent="RootVBox/Cockpit/CockpitHBox/ButtonsVBox"]
+layout_mode = 2
+text = "Reroll"
+
+[node name="UndoButton" type="Button" parent="RootVBox/Cockpit/CockpitHBox/ButtonsVBox"]
+layout_mode = 2
+text = "Undo"
+
+[node name="PhaseButton" type="Button" parent="RootVBox/Cockpit/CockpitHBox/ButtonsVBox"]
+layout_mode = 2
+
+[node name="TurnController" type="Node" parent="."]
+script = ExtResource("1_vw0db")
+metadata/_custom_type_script = "uid://bx0cwykn7bci3"
+
+[node name="EndTurnConfirm" type="ConfirmationDialog" parent="."]

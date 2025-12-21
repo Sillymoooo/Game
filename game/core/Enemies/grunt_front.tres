@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=6 format=3 uid="uid://bvikvkdgscang"]
+
+[ext_resource type="Script" uid="uid://cperid1hy4712" path="res://game/core/face.gd" id="1_5ql7y"]
+[ext_resource type="Script" uid="uid://bus3xgjxlu7u4" path="res://game/core/enemy_archetype.gd" id="2_3s1nv"]
+
+[sub_resource type="Resource" id="Resource_5ql7y"]
+script = ExtResource("1_5ql7y")
+kind = 0
+value = 1
+metadata/_custom_type_script = "uid://cperid1hy4712"
+
+[sub_resource type="Resource" id="Resource_3s1nv"]
+script = ExtResource("1_5ql7y")
+kind = 0
+value = 1
+metadata/_custom_type_script = "uid://cperid1hy4712"
+
+[sub_resource type="Resource" id="Resource_vghti"]
+script = ExtResource("1_5ql7y")
+kind = 1
+value = 2
+metadata/_custom_type_script = "uid://cperid1hy4712"
+
+[resource]
+script = ExtResource("2_3s1nv")
+name = "Goblin"
+die_faces = Array[ExtResource("1_5ql7y")]([SubResource("Resource_5ql7y"), SubResource("Resource_3s1nv"), SubResource("Resource_vghti")])
+metadata/_custom_type_script = "uid://bus3xgjxlu7u4"

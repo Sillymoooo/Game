@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyArchetype" load_steps=5 format=3 uid="uid://bph1sxt5snmg6"]
+
+[ext_resource type="Script" uid="uid://cperid1hy4712" path="res://game/core/face.gd" id="1_kdd77"]
+[ext_resource type="Script" uid="uid://bus3xgjxlu7u4" path="res://game/core/enemy_archetype.gd" id="2_744tu"]
+
+[sub_resource type="Resource" id="Resource_kdd77"]
+script = ExtResource("1_kdd77")
+kind = 0
+value = 1
+metadata/_custom_type_script = "uid://cperid1hy4712"
+
+[sub_resource type="Resource" id="Resource_744tu"]
+script = ExtResource("1_kdd77")
+kind = 0
+value = 2
+metadata/_custom_type_script = "uid://cperid1hy4712"
+
+[resource]
+script = ExtResource("2_744tu")
+name = "Archer"
+row = 1
+die_faces = Array[ExtResource("1_kdd77")]([SubResource("Resource_kdd77"), SubResource("Resource_744tu")])
+metadata/_custom_type_script = "uid://bus3xgjxlu7u4"

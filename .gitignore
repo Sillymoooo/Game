@@ -1,0 +1,26 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot
+.import/
+.export/
+*.translation
+*.mono/
+data_*
+*.tmp
+
+# Godot 4
+.godot/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets / local overrides
+.env
+*.local
+secrets.cfg
+override.cfg
