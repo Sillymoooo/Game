@@ -21,7 +21,7 @@ enum Phase {
 var roll_boundary_id: int = 0
 
 func _init():
-	if dice.is_empty():s
+	if dice.is_empty():
 		for i in range(5):
 			dice.append(Die.new())
 

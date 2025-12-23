@@ -78,7 +78,7 @@ func _build_enemy_rows() -> void:
 		var b := Button.new()
 		var intent := ""
 		if e.die != null:
-			var ef := e.die.current_face()
+			var ef :Face = e.die.current_face()
 			match ef.kind:
 				Face.Kind.ATTACK: intent = "ATK %d" % ef.value
 				Face.Kind.BLOCK: intent = "BLK %d" % ef.value
@@ -90,7 +90,7 @@ func _build_enemy_rows() -> void:
 
 		if can_target and turn.state.phase == GameState.Phase.ACTION and pending_attack_die_index >= 0:
 			var d := turn.state.dice[pending_attack_die_index]
-			var face := d.current_face()
+			var face : face = d.current_face()
 
 			if e.row == Enemy.Row.BACK and front_alive and not face.has_mod(Modifiers.Mod.RANGED):
 				can_target = false
@@ -143,7 +143,7 @@ func _build_dice_strip() -> void:
 		dice_hbox.add_child(b)
 
 func _die_text(d: Die) -> String:
-	var f := d.current_face()
+	var f : Face = d.current_face()
 	var t := ""
 	match f.kind:
 		Face.Kind.ATTACK: t = "ATK %d" % f.value
@@ -206,7 +206,7 @@ func _on_die_pressed(i: int) -> void:
 	if d.spent_this_turn:
 		return
 
-	var f := d.current_face()
+	var f : Face = d.current_face()
 	if turn.state.phase == GameState.Phase.ACTION and f.kind == Face.Kind.BLANK:
 		return
 
