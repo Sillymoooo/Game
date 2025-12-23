@@ -1,0 +1,49 @@
+﻿--- a/game/core/game_state.gd
++++ b/game/core/game_state.gd
+@@ -21,7 +21,7 @@
+ var roll_boundary_id: int = 0
+ 
+ func _init():
+-if dice.is_empty():s
++if dice.is_empty():
+ for i in range(5):
+ dice.append(Die.new())
+ 
+--- a/game/ui/battle_screen.gd
++++ b/game/ui/battle_screen.gd
+@@ -78,7 +78,7 @@
+ var b := Button.new()
+ var intent := ""
+ if e.die != null:
+-var ef := e.die.current_face()
++var ef: Face = e.die.current_face()
+ match ef.kind:
+ Face.Kind.ATTACK: intent = "ATK %d" % ef.value
+ Face.Kind.BLOCK: intent = "BLK %d" % ef.value
+@@ -90,7 +90,7 @@
+ 
+ if can_target and turn.state.phase == GameState.Phase.ACTION and pending_attack_die_index >= 0:
+ var d := turn.state.dice[pending_attack_die_index]
+-var face := d.current_face()
++var face: Face = d.current_face()
+ 
+ if e.row == Enemy.Row.BACK and front_alive and not face.has_mod(Modifiers.Mod.RANGED):
+ can_target = false
+@@ -143,7 +143,7 @@
+ var d := turn.state.dice[i]
+ var btn := dice_hbox.get_child(i) as Button
+-var f := d.current_face()
++var f: Face = d.current_face()
+ btn.text = _face_text(f)
+ btn.disabled = d.spent_this_turn
+ btn.modulate.a = 0.6 if d.held else 1.0
+@@ -206,7 +206,7 @@
+ if pending_attack_die_index < 0:
+ tooltip_title.text = ""
+ tooltip_body.text = ""
+ return
+ var d := turn.state.dice[pending_attack_die_index]
+-var f := d.current_face()
++var f: Face = d.current_face()
+ tooltip_title.text = "Pending: %s" % _face_text(f)
+ tooltip_body.text = "Select a target."
