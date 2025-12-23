@@ -1,9 +1,12 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+~*
 
 # Godot
+*.tmp
 .import/
+*.import
 .export/
 *.translation
 *.mono/

@@ -20,14 +20,11 @@ extends Control
 
 var pending_attack_die_index: int = -1
 
+
 func _ready() -> void:
 	if turn == null:
 		push_error("No TurnController node found at BattleScreen/TurnController")
 		return
-	
-	var k := OS.get_environment("api_key")
-	print("OPENAI_API_KEY present?", k.length() > 0, "len=", k.length())
-
 	
 	# Hook buttons
 	reroll_button.pressed.connect(_on_reroll_pressed)
@@ -90,7 +87,7 @@ func _build_enemy_rows() -> void:
 
 		if can_target and turn.state.phase == GameState.Phase.ACTION and pending_attack_die_index >= 0:
 			var d := turn.state.dice[pending_attack_die_index]
-			var face : face = d.current_face()
+			var face : Face = d.current_face()
 
 			if e.row == Enemy.Row.BACK and front_alive and not face.has_mod(Modifiers.Mod.RANGED):
 				can_target = false
